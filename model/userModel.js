@@ -1,76 +1,73 @@
-const mongoose = require('mongoose')
+// Import the necessary module
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const validator = require("validator")
+// Destructure Schema from mongoose
+const { Schema } = mongoose;
 
+// Create a new instance of the Schema object with your desired fields
+const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true // Trims whitespace
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true // Trims whitespace
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  flatNumber: {
+    type: String,
+    required: true
+  },
+  wing: {
+    type: String,
+    required: true
+  },
+  userType: {
+    type: String,
+    required: true,
+    enum: ['admin', 'user', 'guest'], // Example user types
+  }
+}, {
+  timestamps: true // Adds createdAt and updatedAt timestamps
+});
 
-
-const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: [true, "This username is aleady taken"],
-        minLength: [6, "Username is too short"],
-        maxLength: [14, "Username is too big"],
-    },
-    email: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        unique: [true, "This email is aleady registerd"],
-        required: [true, "Email address is required"],
-        validate: [validator.isEmail, "Please Enter a valid Email"]
-
-    },
-    password: {
-        type: String,
-        required: true,
-        select: false,
-        minLength: [6, "Password is too short"],
-        maxLength: [12, "Password is too big"],
-    },
-    role:{
-        type: String,
-        default:"teacher",
-    }, 
-      
-    clgShortName:{
-        type: String, 
-        default:""
-    },
-    status:{
-        type:String,
-        default:"unBand"
-    },
-    settings:{
- type:Object,
- default:{
-    theme:"light_theme"
- }
-    },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
-})
 
 // converting password into hash
 userSchema.pre("save", async function () {
-    if (!this.isModified('password')) {
-        next()
-    }
-    this.password = await bcrypt.hash(this.password, 10)
+  if (!this.isModified('password')) {
+      next()
+  }
+  this.password = await bcrypt.hash(this.password, 10)
 })
 
 // compairing password
 userSchema.methods.comparePassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
-  };
+  return await bcrypt.compare(password, this.password);
+};
 
 //josn web token genrator
 userSchema.methods.getJWTtoken =  function () {
-    return jwt.sign({ id: this._id }, process.env.JWT_SECREATE, {
-        expiresIn: process.env.JWT_EXPIRE
-    })
+  return jwt.sign({ id: this._id }, process.env.JWT_SECREATE, {
+      expiresIn: process.env.JWT_EXPIRE
+  })
 }
 
-module.exports = mongoose.model('user', userSchema)
 
+// Create a model from the schema
+const userModel = mongoose.model('User', userSchema);
+
+// Export the model
+module.exports = userModel;

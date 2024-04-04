@@ -72,7 +72,9 @@ const uploadRemand  = (filename)=>{
 
 
 
- 
+app.get("/",(req,res)=>{
+  res.send("working file")
+})
 
 app.post("/uploadProfilePicture/:attName", function (req, res, next) {
   // Error MiddleWare for multer file upload, so if any
