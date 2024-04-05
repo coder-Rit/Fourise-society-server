@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Feature images/apple-touch-icon.png">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="scroll-watcher"></div>
+    <header id="header">
+        <div class="logo">
+            <img src="Background_images/Society Logo Main.jpeg" alt="">
+            <h2 class="title">Dream Sankalp Co-op Society</h2>
+        </div>
+    </header>
+    <nav class="navigation">
+        <a class="links" href="index.html">Home</a>
+        <div class="dropdown-menu">
+            <button class="menu-btn" onclick="window.location.href= 'AboutUs.html'">About Us </button>
+            <div class="menu-content">
+                <a class="links-hidden" href="committee.html">Committee</a>
+                <a class="links-hidden" href="gallery.html">Gallery</a>
+                <a class="links-hidden" href="flatinfo.html">Flat Info</a>
+            </div>
+        </div>
+        <div class="dropdown-menu">
+            <button class="menu-btn" onclick="window.location.href='facility.html'">Facilities</button>
+            <div class="menu-content">
+                <a class="links-hidden" href="/facility.html#security">Security</a>
+                <a class="links-hidden" href="/facility.html#parking">Parking</a>
+                <a class="links-hidden" href="/facility.html#power">Power Backup</a>
+                <a class="links-hidden" href="/facility.html#gym">Clubhouse</a>
+                <a class="links-hidden" href="/facility.html#water">Water Supply</a>
+                <a class="links-hidden" href="/facility.html#garden">Garden Surroundings</a>
+                <a class="links-hidden" href="/facility.html#kids">Kids Entertainment</a>
+                <a class="links-hidden" href="/facility.html#maintain">Maintenance</a>
+                <a class="links-hidden" href="/facility.html#cleaning">Housekeeping</a>
+            </div>
+        </div>
+        <a class="links" href="blog.html">Circulars</a>
+        <a class="links" href="contactus.html">Contact</a>
+        <a class="links" href="FAQ.html">FAQ</a>
+        <a class="links" href="payment.html">Payment</a>
+    </nav>
+
+    <div class="body">
+        <div class="backimg"></div>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form  >
+                    <h1 id="signin">Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><img src="Feature images/facebook.png" alt="Facebook"></a>
+                        <a href="#" class="social"><img src="Feature images/google.png" alt="Google"></a>
+                        <a href="#" class="social"><img src="Feature images/twitter.png" alt="Twitter"></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="text" id="name" placeholder="Name" required name="name"/>
+                    <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required name="phone" />
+                    <input type="email" id="email" class="email" placeholder="Email" required name="email"/>
+                    <input type="password" id="password" class="password" placeholder="Password" name="password"/>
+                    <div class="flatinfo">
+                        <input type="number" id="flat" placeholder="Flat Number" name="flatnumber"/>
+                        <input type="text" id="wing" placeholder="Wing" name="wing"/>
+                    </div>
+                    <select name="typeofuser" class="usertype" id="userType">
+                        <option value="Select" selected>Select Type of User</option>
+                        <option value="Tenant">Tenant</option>
+                        <option value="Committee Member">Committee Member</option>
+                        <option value="Society Manager">Society Manager</option>
+                    </select>
+                    <button id="sign" onclick="signUp()"  >Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="" method="post">
+                    <h1 id="login">Log In</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><img src="Feature images/facebook.png" alt="Facebook"></a>
+                        <a href="#" class="social"><img src="Feature images/google.png" alt="Google"></a>
+                        <a href="#" class="social"><img src="Feature images/twitter.png" alt="Twitter"></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" class="email" placeholder="Email" name="email"/>
+                    <input type="password" class="password" placeholder="Password" name="password"/>
+                    <a href="#" class="fyg">Forgot your password?</a>
+                    <button id="log" type="submit" name="login">Log In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1 class="hello">Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Log In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1 class="hello">Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" onclick="window.location.href='#header'" id="upwards"><img src="Feature images/uparrow.png" alt=""></button>
+    <footer>
+        <div class="foot">
+            <div class="left-section">
+                <img src="Background_images/Dream Sankalp Co-op Society Logo.jpeg" alt="Footer Logo">
+                <h1 class="heading1">Dream Sankalp Co-op Society</h1>
+            </div>
+            <div class="footer-content">
+                <div class="useful-links">
+                    <h2>Useful Links</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="AboutUs.html">AboutUs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="facility-links">
+                    <h2>Our Facilities</h2>
+                    <ul>
+                        <li><a href="/facility.html#parking">Parking</a></li>
+                        <li><a href="/facility.html#security">Security</a></li>
+                        <li><a href="/facility.html#gym">Clubhouse</a></li>
+                        <li><a href="/facility.html#maintain">Maintenance</a></li>
+                        <li><a href="/facility.html#cleaning">Housekeeping</a></li>
+                        <li><a href="/facility.html#water">Water Supply</a></li>
+                    </ul>
+                </div>
+                <div class="address">
+                    <div class="info">
+                        <p>Email : Dreamssankalp@gmail.com</p>
+                        <p>Phone : +91 7745892255</p>
+                        <p id="adr">Address: Dream Sankalp BJS college, Bakori Rd, Pune, Maharashtra 412207</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copbut">
+            <div class="copyright">
+                <p>&copy; 2024 Fourise Software Solutions Pvt. Ltd.</p>
+            </div>
+            <div class="buttons">
+                <button type="button"><img src="Feature images/instagram.png" alt=""></button>
+                <button type="button"><img src="Feature images/facebook.png" alt=""></button>
+                <button type="button"><img src="Feature images/twitter.png" alt=""></button>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

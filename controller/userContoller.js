@@ -6,6 +6,7 @@ const sendJwt = require("../utils/sendJwt");
 
 // signUp
 exports.signUp = catchAsyncErorr(async (req, res, next) => {
+  console.log(req.body);
   const newAcc = await userModel.create(req.body);
   sendJwt(newAcc, res, "Account is crated successfully", 201, req);
 });

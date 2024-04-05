@@ -25,6 +25,7 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
+    select:false,
     required: true
   },
   flatNumber: {
@@ -38,7 +39,7 @@ const userSchema = new Schema({
   userType: {
     type: String,
     required: true,
-    enum: ['admin', 'user', 'guest'], // Example user types
+    enum: ['Tenant', 'Committee Member', 'Society Manager'], // Example user types
   }
 }, {
   timestamps: true // Adds createdAt and updatedAt timestamps
